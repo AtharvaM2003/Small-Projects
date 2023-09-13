@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Database</title>
     <link rel="stylesheet" href="./style.css">
+    
 
 </head>
+<script type="text/javascript" src="./script.js"> </script>
 <body>
     <div class="he">
         <h1>Student Database</h1>
         <br>
-        <form action="">
-            <p>Name:    </p> <input type="text" value="Enter Name Here" name="na">
-            <p>Roll No: </p> <input type="text" name="roll" value="Enter Roll No">
-            <p>Address: </p> <textarea name="add" id="" cols="25" rows="10">Enter Address</textarea>
-            
-            <input name="reg" type="button" value="Register">
+        <form name="f1" onsubmit="msg()">
+            <p>Name:    </p> <input type="text" placeholder="Enter Name Here" name="na">
+            <p>Roll No: </p> <input type="text" name="roll" placeholder="Enter Roll No">
+            <p>Address: </p> <textarea name="add" id="" cols="25" rows="10" placeholder="Enter Address"></textarea>
+            <input name="reg" type="submit" value="Register">
         </form>
     </div>
 </body>
