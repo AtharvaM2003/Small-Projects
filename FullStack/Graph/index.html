@@ -12,11 +12,24 @@
       padding: 0;
       font-family: 'Quicksand', sans-serif;
     }
+    #maain{
+      width: 60%;
+      margin-left: 20%;
+      border: black solid;
+      padding-top: 3px;
+      padding-bottom: 0;
+      background-color: darkgrey;
+    }
 
     #input-form {
       margin-left: 30%;
-      margin-top: 20px;
+      margin-top: 30px;
       display: flex;
+      border: 2px solid;
+
+      border-color:black;
+
+      border-radius: 5px;
       
       position: relative;
       justify-content: center;
@@ -28,12 +41,14 @@
     #studentName,#studentMarks{
       margin: 5px 0px 7px 0px;
       padding: 4px;
-      width: 30%;
+      width: 70%;
 
     }
     .student-info {
       font-weight: bold;
-     Center-align student info */
+      margin-left: 30%;
+      margin-top: 20px;
+     /*Center-align student info */
     }
 
     .student-name {
@@ -48,16 +63,22 @@
       left: 40%;
       top: 50%;
       border-radius: 4px;
-
-     
     }
+    
+     
+    
     #displayedName, #displayedMarks {
       font-size: 18px;
+    }
+    #doughnut-chart{
+      margin-left: 35%;
+      margin-top: 20px;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <div id="maain">
   <div id="input-form">
     <label for="studentName">Student Name:</label>
     <input type="text" id="studentName" placeholder="Enter student name">
@@ -73,7 +94,7 @@
   </div>
 
   <canvas id="doughnut-chart" width="300" height="300"></canvas>
-
+</div>
   <script>
     // Initialize an empty data array for the chart
     let data = {
