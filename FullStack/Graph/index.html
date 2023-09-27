@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Student Marks Doughnut Chart</title>
+  <style>
+    /* Add your CSS styles here */
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #input-form {
+      margin-left: 30%;
+      margin-top: 20px;
+      display: flex;
+      
+      position: relative;
+      justify-content: center;
+      flex-direction: column; /* Align inputs vertically */
+      background-color: antiquewhite;
+      width: 30%;
+      padding: 30px 60px;
+    }
+    #studentName,#studentMarks{
+      margin: 5px 0px 7px 0px;
+      padding: 4px;
+      width: 30%;
+
+    }
+    .student-info {
+      font-weight: bold;
+     Center-align student info */
+    }
+
+    .student-name {
+      margin-bottom: 10px; /* Add space between name and marks */
+    }
+
+    #addd{
+      padding: 5px;
+      margin-top:20px ;
+      width: 100px;
+      position:relative;
+      left: 40%;
+      top: 50%;
+      border-radius: 4px;
+
+     
+    }
+    #displayedName, #displayedMarks {
+      font-size: 18px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="input-form">
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" placeholder="Enter student name">
+    <label for="studentMarks">Student Marks:</label>
+    <input type="number" id="studentMarks" placeholder="Enter student marks">
+   <button id="addd" onclick="addData()">Add Data</button>
+  </div>
+  
+  <div class="student-info">
+    <h2>Student Information:</h2>
+    <p class="student-name">Name: <span id="displayedName"></span></p>
+    <p>Marks: <span id="displayedMarks"></span></p>
+  </div>
+
+  <canvas id="doughnut-chart" width="300" height="300"></canvas>
+
+  <script>
+    // Initialize an empty data array for the chart
+    let data = {
+      labels: [],
+      datasets: [{
+        data: [],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(153, 102, 255, 0.7)',
+        ],
+      }],
+    };
+
+    const ctx = document.getElementById('doughnut-chart').getContext('2d');
+    const doughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: {
+        responsive: false, // Prevent the chart from resizing
+      },
+    });
+
+    // Function to add data to the chart
+    function addData() {
+      const studentName = document.getElementById('studentName').value;
+      const studentMarks = parseFloat(document.getElementById('studentMarks').value);
+
+      if (studentName && !isNaN(studentMarks)) {
+        data.labels.push(studentName);
+        data.datasets[0].data.push(studentMarks);
+
+        // Update the chart
+        doughnutChart.update();
+
+        // Clear input fields
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentMarks').value = '';
+
+        // Display the entered data
+        document.getElementById('displayedName').textContent = studentName;
+        document.getElementById('displayedMarks').textContent = studentMarks;
+      }
+    }
+  </script>
+</body>
+</html>
