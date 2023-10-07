@@ -29,7 +29,7 @@ def passenger():
 def adddata():
     import mysql.connector
     while True:
-        mydb=mysql.connector.connect(host="localhost",username="root",passwd="root",database="aircraft")
+        mydb=mysql.connector.connect(host="localhost",username="root",passwd="Atharva",database="aircraft")
         mycursor=mydb.cursor()
         mycursor.execute("select * from passenger_details")
         myresult=mycursor.fetchall()
@@ -76,7 +76,7 @@ def fetchdata():
     import mysql.connector
     from prettytable import PrettyTable
     x=PrettyTable()
-    mydb=mysql.connector.connect(host="localhost",username="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",username="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     x.field_names=['SEAT NO','AADHAR NO','FIRST NAME','LAST NAME','GENDER','CONTACT NO','AGE']
     while True:
@@ -100,7 +100,7 @@ def fetchdata():
 
 def updata():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",username="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",username="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     mycursor.execute("select * from passenger_details")
     myresult=mycursor.fetchall()
@@ -140,7 +140,7 @@ def updata():
             break
 def deldata():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",username="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",username="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     mycursor.execute("select * from passenger_details")
     myresult=mycursor.fetchall()
@@ -188,7 +188,7 @@ def pilot():
 def add_pilot_details():
     import mysql.connector
     while True:
-        mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="aircraft")
+        mydb=mysql.connector.connect(host="localhost",user="root",password="Atharva",database="aircraft")
         mycursor=mydb.cursor()
         mycursor.execute("select*from pilot_details")
         myresult=mycursor.fetchall()
@@ -221,7 +221,7 @@ def add_pilot_details():
             break
 def display_pilot_details():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",user="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     from prettytable import PrettyTable
     x=PrettyTable()
@@ -248,7 +248,7 @@ def display_pilot_details():
 def update_pilot_details():
     print("field names:[ pilot_id,name,gender,age,contact_details,qualification,working_experience,health_status,aircraft_kind]")
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",user="root",password="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     while True:
         mycursor.execute("select*from pilot_details")
@@ -274,7 +274,7 @@ def update_pilot_details():
          
 def delete_details():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",user="root",password="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     while True:
         mycursor.execute("select*from pilot_details")
@@ -327,7 +327,7 @@ def aircrew():
             print("Invalid choice")
 def insert():
         import mysql.connector
-        mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="aircraft")
+        mydb=mysql.connector.connect(host="localhost",user="root",passwd="Atharva",database="aircraft")
         mycursor=mydb.cursor()
         ans='yes'
         while ans=='yes':
@@ -359,7 +359,7 @@ def insert():
             ans=input("Want to enter more data?(yes/no):")
 def display():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",user="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     from prettytable import PrettyTable
     x=PrettyTable()
@@ -387,7 +387,7 @@ def display():
 def update():
      print("field names: [ID,name,age,qualification,exp,travelhours,healthrate,contact,gender]")
      import mysql.connector
-     mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="aircraft")
+     mydb=mysql.connector.connect(host="localhost",user="root",passwd="Atharva",database="aircraft")
      mycursor=mydb.cursor()
      mycursor.execute("select*from crewmember_details")
      myres=mycursor.fetchall()
@@ -411,7 +411,7 @@ def update():
          ans=input("Want to update more data?(yes/no):")
 def delete():
     import mysql.connector
-    mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="aircraft")
+    mydb=mysql.connector.connect(host="localhost",user="root",passwd="Atharva",database="aircraft")
     mycursor=mydb.cursor()
     mycursor.execute("select*from crewmember_details")
     myres=mycursor.fetchall()
@@ -442,7 +442,7 @@ def flight_summary():
     print('---------------------------------------------------------------------------------------')
     import random
     import mysql.connector
-    mydb=mysql.connector.connect(host='localhost',username='root',passwd='root',database='aircraft')
+    mydb=mysql.connector.connect(host='localhost',username='root',passwd='Atharva',database='aircraft')
     mycursor=mydb.cursor()
     mycursor.execute('select count(*) from passenger_details')
     pass_count=(mycursor.fetchone()[0])
