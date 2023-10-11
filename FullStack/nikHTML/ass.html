@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+ 
+  <head>
+ 
+    <meta charset="UTF-8" />
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+    <title>Assistant</title>
+    <style>
+
+        *{
+         
+            margin: 0;
+         
+            padding: 0;
+         
+            box-sizing: border-box;
+         
+            font-family: 'Roboto Mono',monospace;
+         
+        }
+         
+         
+        .main{
+         
+            min-height: 100vh;
+         
+            position: relative;
+         
+            width: 100%;
+         
+            background:#000;
+         
+            display: flex;
+         
+            align-items: center;
+         
+            flex-direction: column;
+         
+            justify-content: center;
+         
+        }
+         
+         
+        .main .image-container{
+         
+            padding: 10px;
+         
+        }
+         
+        .main .image-container .image{
+         
+            width: 100%;
+         
+            display: flex;
+         
+            align-items:center;
+         
+            justify-content:center;
+         
+        }
+         
+        .main .image-container .image img{
+         
+            width: 350px;
+         
+            align-items: center;
+         
+        }
+         
+         
+        .main .image-container h1{
+         
+            color: #00bcd4;
+         
+            text-align: center;
+         
+            margin-bottom: 10px;
+         
+            font-size: 40px;
+         
+        }
+         
+        .main .image-container p{
+         
+            color: #304042;
+         
+            text-align: center;
+         
+            margin-bottom: 40px;
+         
+            
+         
+        }
+         
+         
+        .main .talk{
+         
+            display: flex;
+         
+            justify-content: center;
+         
+            align-items: center;
+         
+            width: 40vw;
+         
+            height: 50px;
+         
+            border-radius: 20px;
+         
+            background: rgb(202 253 255 / 50%);
+         
+          }
+         
+          
+         
+           .talk {
+         
+            background: transparent;
+         
+            outline: none;
+         
+            border: none;
+         
+            width: 50px;
+         
+            height: 50px;
+         
+            display: flex;
+         
+            justify-content: center;
+         
+            align-items: center;
+         
+            font-size: 19px;
+         
+            cursor: pointer;
+         
+          }
+         
+          
+         
+          .main .input .talk i {
+         
+            font-size: 20px;
+         
+            color: #aed0d0;
+         
+          }
+         
+          
+         
+          .main .content {
+         
+            color: #aed0d0;
+         
+            font-size: 20px;
+         
+            margin-right: 20px;
+         
+            margin-left: 1000px;
+         
+        }
+        
+        </style>
+        
+ 
+  </head>
+ 
+  <body>
+ 
+    <section class="main">
+ 
+      <h3 class="content"></h3>
+ 
+      <div class="image-container">
+ 
+        <div class="image">
+ 
+            <img src="gif1.gif" alt="image">
+ 
+        </div>
+ 
+        <h1>F O O D Y</h1>
+ 
+        <p>I'm a Recipe Assistant. How can i help you ?</p>
+ 
+       </div>
+ 
+ 
+     
+ 
+      <button class="talk">Let's Talk</button>
+ 
+    </section>
+ 
+  </body>
+ 
+</html>
+
+
+<script>
+ 
+// The JavaScript Part Starts
+ 
+const content = document.querySelector(".content");
+ 
+const btn = document.querySelector(".talk");
+ 
+ 
+ 
+///online searches
+ 
+const juice = ["showing juice recipe"];
+ 
+const dosa=['showing Dosa recipe '];
+ 
+const cake = ["showing cake recipe"];
+ 
+const panipuri=["Showing panipuri recipe"]
+ 
+const pizza=["showing pizza recipe"]
+
+const Tea=["showing Tea recipe"]
+ 
+ 
+ 
+ 
+ 
+const SpeechRecognition =
+ 
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+ 
+const recognition = new SpeechRecognition();
+ 
+ 
+recognition.onresult = function (event) {
+ 
+  const current = event.resultIndex;
+ 
+ 
+  const transcript = event.results[current][0].transcript;
+ 
+  content.textContent = transcript;
+ 
+  readOutLoud(transcript);
+ 
+};
+ 
+ 
+btn.addEventListener("click", () => {
+ 
+  recognition.start();
+ 
+});
+ 
+ 
+function readOutLoud(message) {
+ 
+  const speech = new SpeechSynthesisUtterance();
+ 
+ 
+  speech.text = "I am not able to understand ,sir";
+ 
+ 
+  if (message.includes("hey") || message.includes('hello')) {
+ 
+    const finalText ="Hello";
+ 
+    speech.text = finalText;
+ 
+  }
+ 
+  else if (message.includes("how are you")) {
+ 
+    const finalText ="I am fine Sir tell me how can i help you";
+ 
+    speech.text = finalText;
+ 
+  }
+ 
+  else if (message.includes("name")) {
+ 
+    const finalText ="My name is foody your Recipe assistant";
+ 
+    speech.text = finalText;
+ 
+  }
+ 
+ else if(message.includes("what is")|| message.includes('who is')|| message.includes('what are') || message.includes('which are')) {
+ 
+    window.open(`https://www.google.com/search?q=${message.replace(" ", "")}`,"_blank");
+ 
+    const finalText ="This is what i found on internet regarding "+message;
+ 
+    speech.text = finalText;
+ 
+   
+ 
+  }
+ 
+  else if (message.includes("juice")) {
+ 
+    const finalText = juice[Math.floor(Math.random() * juice.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/lEaR2y5nXkE?feature=shared");
+ 
+  }
+ 
+ 
+  else if (message.includes("dosa")) {
+ 
+    const finalText = dosa[Math.floor(Math.random() * dosa.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/RLhTVFGnNt4?feature=shared");
+ 
+  }
+ 
+  else if (message.includes("pani puri")) {
+ 
+    const finalText = panipuri[Math.floor(Math.random() * panipuri.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/6ajvId3HS0c?feature=shared");
+ 
+  }
+ 
+  else if (message.includes("cake")) {
+ 
+    const finalText = cake[Math.floor(Math.random() * cake.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/jxiiRCGkNM0?feature=shared");
+ 
+  }
+ 
+  else if (message.includes("pizza")) {
+ 
+    const finalText = pizza[Math.floor(Math.random() * pizza.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/u2rhpOScINE?feature=shared");
+ 
+  }
+
+ 
+  else if (message.includes("Tea")) {
+ 
+    const finalText = Tea[Math.floor(Math.random() * Tea.length)];
+ 
+    speech.text = finalText;
+ 
+    window.open("https://youtube.com/shorts/_r6ttYUjRq8?feature=shared");
+ 
+  }
+
+ 
+  else{
+ 
+    const finalText =" sorry I am not able to understand ";
+ 
+    speech.text = finalText;
+ 
+  }
+ 
+ 
+  speech.volume = 1;
+ 
+  speech.rate = 1.1;
+ 
+  speech.pitch = 1;
+ 
+ 
+  window.speechSynthesis.speak(speech);
+ 
+}
+
+</script>
